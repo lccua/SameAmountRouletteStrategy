@@ -16,7 +16,7 @@
             double bet = 10;
             double budget = 500;
             double breakPoint = 510.00;
-            int spins = 2000; //2hours+-
+            int spins = 120; //2hours+-
 
             for (int i = 0; i < spins; i++)
             {
