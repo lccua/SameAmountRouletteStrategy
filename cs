@@ -1,0 +1,53 @@
+        static void Main(string[] args)
+        {
+            for (int i = 0; i < 10; i++) //amount off days
+            {
+                Console.WriteLine($"Day {i+1}");
+                MartinGale();
+            }
+        }
+        static void MartinGale()
+        {
+            Random rd = new Random();
+
+            int[] black = { 32, 19, 21, 25, 34, 27, 36, 30, 23, 5, 16, 1, 14, 9, 18, 7, 12, 3 };
+            int[] red = { 15, 4, 2, 17, 6, 13, 11, 8, 10, 24, 33, 20, 31, 22, 29, 28, 35, 26 };
+
+            double bet = 10;
+            double budget = 500;
+            double breakPoint = 510.00;
+            int spins = 2000; //2hours+-
+
+            for (int i = 0; i < spins; i++)
+            {
+                int randomNumber = rd.Next(0, 36);
+ 
+                if (black.Contains(randomNumber))
+                {
+                    budget = budget - bet;
+                    if (budget <= 0)
+                    {
+                        break;
+                    }
+                }
+                else if (red.Contains(randomNumber))
+                {
+                    budget = budget + bet;
+                    if (budget >= breakPoint)
+                    {
+                        break;
+                    }
+                }
+                else
+                {
+                    budget = budget - bet;
+                    if (budget <= 0)
+                    {
+                        break;
+                    }
+                }
+            }
+            Console.WriteLine("-----------------------");
+            Console.WriteLine($"Your budget is now {budget} dollars after {spins} spins");
+            Console.WriteLine();
+        }
